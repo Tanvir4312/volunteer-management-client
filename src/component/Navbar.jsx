@@ -56,9 +56,9 @@ const Navbar = () => {
           <li>
             <details>
               <summary>My Profile</summary>
-              <ul className="w-52">
+              <ul className="w-52 bg-amber-300 z-10">
                 <li>
-                  <Link to={"/"}>Add Volunteer need Post</Link>
+                  <Link to={"/add-volunteer"}>Add Volunteer need Post</Link>
                 </li>
                 <li>
                   <Link to={"/"}>Manage My Posts</Link>
