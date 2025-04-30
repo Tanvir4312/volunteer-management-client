@@ -1,12 +1,37 @@
-import React from "react";
 import registerAnimation from "../assets/Animation - 1745950141968 (1).json";
 import Lottie from "lottie-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const { userRegister, userProfileUpdate } = useAuth();
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const initialData = Object.fromEntries(formData.entries());
+    const email = initialData.email;
+    const password = initialData.password;
+    const userName = initialData.userName;
+    const photoURL = initialData.photoURL;
+    console.log(email, password);
+    try {
+      await userRegister(email, password);
+      await userProfileUpdate(userName, photoURL);
+      toast.success("Registration successfully");
+      navigate("/");
+    } catch (err) {
+      toast.error(err,"Email already use");
+      console.log(err);
+    }
+  };
+
   return (
     <div className="md:w-6xl mx-auto my-9">
-      <div className="mb-6 text-center">
+      <div className="mb-10 text-center">
         <h1 className="text-5xl font-bold">
           <span className="text-amber-500">Register</span> Now
         </h1>
@@ -16,7 +41,7 @@ const Register = () => {
           <Lottie className="h-80" animationData={registerAnimation}></Lottie>
         </div>
         <div className="md:w-[50%] bg-slate-200 p-8 rounded">
-          <form>
+          <form onSubmit={handleRegister}>
             {/* User name */}
             <label className="input validator w-full mb-4">
               <svg
@@ -38,6 +63,7 @@ const Register = () => {
               <input
                 className="w-full"
                 type="input"
+                name="userName"
                 required
                 placeholder="Username"
                 title="Only letters, numbers or dash"
@@ -65,6 +91,7 @@ const Register = () => {
               <input
                 className="w-full"
                 type="email"
+                name="email"
                 placeholder="mail@site.com"
                 required
               />
@@ -99,9 +126,10 @@ const Register = () => {
               <input
                 className="w-full"
                 type="password"
+                name="password"
                 required
                 placeholder="Password"
-                minlength="8"
+                minLength="8"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
               />
@@ -135,6 +163,7 @@ const Register = () => {
               <input
                 className="w-full"
                 type="url"
+                name="photoURL"
                 required
                 placeholder="https://"
                 pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\-].*[a-zA-Z0-9])?\.)+[a-zA-Z].*$"

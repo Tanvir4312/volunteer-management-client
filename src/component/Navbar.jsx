@@ -1,6 +1,14 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 const Navbar = () => {
+  const { user, userLogout } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    await userLogout();
+    navigate("/login");
+  };
+  console.log(user);
   return (
     <div className="navbar">
       <div className="navbar-start">
@@ -36,7 +44,8 @@ const Navbar = () => {
           </ul>
         </div>
         <a className="btn btn-ghost text-indigo-500 hover:bg-white text-2xl border-0 shadow-none">
-          <span className="-mr-2 text-6xl text-amber-500">V</span>olunteer<span className="-mx-2 text-4xl text-amber-500">C</span>onnect
+          <span className="-mr-2 text-6xl text-amber-500">V</span>olunteer
+          <span className="-mx-2 text-4xl text-amber-500">C</span>onnect
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -62,8 +71,22 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
+      
       <div className="navbar-end">
-        <button className="btn"><Link to={'/login'}>Login</Link></button>
+      <div className="mr-4">
+        {
+          user && <img referrerPolicy="no-referrer" className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
+        }
+      </div>
+        {user ? (
+          <button onClick={handleLogout} className="btn">
+            Logout
+          </button>
+        ) : (
+          <button className="btn">
+            <Link to={"/login"}>Login</Link>
+          </button>
+        )}
       </div>
     </div>
   );

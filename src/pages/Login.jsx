@@ -1,12 +1,45 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginAnimation from '../assets/Animation - 1741718582255.json'
 import Lottie from 'lottie-react';
+import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const {userSignin, signinWithGoogle} = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogin = async e =>{
+    e.preventDefault()
+
+    const form = e.target
+    const email= form.email.value
+    const password= form.password.value
+    
+    try{
+      await userSignin(email, password)
+      toast.success('Login Successfully')
+      navigate('/')
+    }
+    catch(err){
+      toast.error('Email or password Invalid')
+      console.log(err);
+    }
+  }
+
+  const handleGoogle = async() =>{
+    try{
+      await signinWithGoogle()
+      toast.success('Login Successfully')
+      navigate('/')
+    }
+    catch(err){
+    console.log(err);
+    }
+  }
   return (
     <div className="md:w-6xl mx-auto my-9">
-      <div className="mb-6 text-center">
+      <div className="mb-10 text-center">
         <h1 className="text-5xl font-bold">
           <span className="text-amber-500">Login</span> Now
         </h1>
@@ -16,7 +49,7 @@ const Login = () => {
           <Lottie className="h-80" animationData={loginAnimation}></Lottie>
         </div>
         <div className="md:w-[50%] bg-slate-200 p-8 rounded">
-          <form>
+          <form onSubmit={handleLogin}>
             {/* Email field */}
             <label className="input validator w-full">
               <svg
@@ -37,6 +70,7 @@ const Login = () => {
               </svg>
               <input
                 className="w-full"
+                name="email"
                 type="email"
                 placeholder="mail@site.com"
                 required
@@ -72,9 +106,10 @@ const Login = () => {
               <input
                 className="w-full"
                 type="password"
+                name="password"
                 required
                 placeholder="Password"
-                minlength="8"
+                minLength="8"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
               />
@@ -88,7 +123,7 @@ const Login = () => {
             </p>
 
             {/* buttons */}
-            <button className="btn my-4"> <img className="w-9" src="https://img.icons8.com/?size=48&id=17949&format=png" alt="" /> Login with Google</button>
+            <button onClick={handleGoogle} className="btn my-4"> <img className="w-9" src="https://img.icons8.com/?size=48&id=17949&format=png" alt="" /> Login with Google</button>
             <button className="btn btn-block bg-indigo-400 font-bold hover:text-white">Login</button>
           </form>
           <p className="mt-3">Do not have an account? Please <Link to={'/register'}><span className="text-indigo-500 font-medium">Register</span></Link></p>
