@@ -43,9 +43,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-indigo-500 hover:bg-white text-2xl border-0 shadow-none">
-          <span className="-mr-2 text-6xl text-amber-500">V</span>olunteer
-          <span className="-mx-2 text-4xl text-amber-500">C</span>onnect
+        <a className="btn btn-ghost -ml-8 md:-ml-0 text-indigo-500 hover:bg-white md:text-2xl text-xl border-0 shadow-none">
+          <span className="-mr-2 md:text-6xl text-amber-500">V</span>olunteer
+          <span className="-mx-2 md:text-4xl text-amber-500">C</span>onnect
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -73,9 +73,9 @@ const Navbar = () => {
       </div>
       
       <div className="navbar-end">
-      <div className="mr-4">
+      <div className="md:mr-4">
         {
-          user && <img referrerPolicy="no-referrer" className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
+          user && <img title={user?.displayName} referrerPolicy="no-referrer" className="md:w-12 md:h-12 w-7 h-7  rounded-full hover:cursor-pointer" src={user.photoURL} alt="" />
         }
       </div>
         {user ? (

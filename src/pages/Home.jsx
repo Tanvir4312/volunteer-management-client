@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Slider from '../component/Slider';
+
+
+
 
 const Home = () => {
     return (
         <div className=''>
-            This is home
+            <Slider></Slider>
           
             
         </div>
