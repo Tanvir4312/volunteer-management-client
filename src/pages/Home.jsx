@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from '../component/Slider';
 import VolunteerNeed from '../component/VolunteerNeed';
 import Upcoming from '../component/Upcoming';
+import VolunteerSpotlight from '../component/VolunteerSpotlight';
 
 
 
@@ -12,6 +13,7 @@ const Home = () => {
             <Slider></Slider>
             <VolunteerNeed></VolunteerNeed>
             <Upcoming></Upcoming>
+            <VolunteerSpotlight></VolunteerSpotlight>
           
             
         </div>
