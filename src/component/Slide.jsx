@@ -8,7 +8,7 @@ const Slide = ({ image, text }) => {
     >
       <div className="">
         <div className="relative -bottom-96 text-center md:px-20">
-          <h3 className="text-white text-3xl font-medium">{text}</h3>
+          <h3 className="text-white md:text-3xl font-medium">{text}</h3>
         </div>
       </div>
     </div>

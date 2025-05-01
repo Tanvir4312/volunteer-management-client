@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import AddVolunteer from "../pages/AddVolunteer";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/add-volunteer',
-    element:<AddVolunteer></AddVolunteer>
+    element:<PrivateRoute><AddVolunteer></AddVolunteer></PrivateRoute>
   }
 ]);
 export default router;

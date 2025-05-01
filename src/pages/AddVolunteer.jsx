@@ -3,17 +3,44 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AddVolunteer = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
+  const navigate = useNavigate();
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
-    console.log(initialData);
+
+    const volunteerData = {
+      email: initialData.email,
+      name: initialData.name,
+      thumbnail: initialData.thumbnail,
+      postTitle: initialData.postTitle,
+      Description: initialData.email,
+      category: initialData.category,
+      location: initialData.location,
+      NoOfVolunteersNeeded: initialData.NoOfVolunteersNeeded,
+      date: initialData.date,
+    };
+
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/add-volunteer`,
+        volunteerData
+      );
+      
+      toast.success("Volunteer data add successfully");
+      navigate("/");
+    } catch (err) {
+      toast.error(err.message);
+    }
   };
   return (
     <div className="lg:max-w-6xl md:max-w-2xl mx-auto my-10">
@@ -123,7 +150,7 @@ const AddVolunteer = () => {
               </div>
 
               <DatePicker
-              name="date"
+                name="date"
                 className="bg-white py-2 pl-2 border border-gray-300 rounded"
                 selected={startDate}
                 onChange={(data) => setStartDate(data)} //only when value has changed
