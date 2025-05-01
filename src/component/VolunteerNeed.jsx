@@ -15,7 +15,7 @@ const VolunteerNeed = () => {
     };
     fetchVolunteerData()
   }, []);
-  console.log(volunteers);
+
   return <div className="mb-6">
     <h1 className="text-center text-3xl font-medium my-12">Volunteer Needs Now</h1>
     <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">

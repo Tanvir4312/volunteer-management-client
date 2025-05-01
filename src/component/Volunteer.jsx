@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Volunteer = ({volunteer}) => {
-    console.log(volunteer);
-    const { thumbnail, postTitle, category, date,description,noOfVolunteersNeeded,email,name } = volunteer || {};
+
+    const {_id, location, thumbnail, postTitle, category, date, description, noOfVolunteersNeeded, email, name } = volunteer || {};
+    
     return (
         
       <div className="card h-[40rem] bg-base-100 shadow-sm">
@@ -27,14 +29,17 @@ const Volunteer = ({volunteer}) => {
           <p className="font-medium">
           Organizer Email: {email} 
           </p>
-          <p className="font-medium">DeadLine: {date}</p>
           <p className="font-medium">
-            Description: {description} 
+          Location: {location} 
+          </p>
+          <p className="font-medium">DeadLine: {date}</p>
+          <p>
+            <span className="font-medium">Description:</span> {description} 
           </p>
 
          
-          <div className="card-actions justify-center">
-            <button className="btn btn-block bg-indigo-500 text-white">Be a Volunteer</button>
+          <div>
+            <Link to={`/beAVolunteer/${_id}`}><button className="btn btn-block bg-indigo-500 text-white">Be a Volunteer</button></Link>
           </div>
         </div>
       </div>

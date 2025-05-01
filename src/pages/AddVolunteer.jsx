@@ -26,7 +26,7 @@ const AddVolunteer = () => {
       description: initialData.description,
       category: initialData.category,
       location: initialData.location,
-      noOfVolunteersNeeded: initialData.NoOfVolunteersNeeded,
+      noOfVolunteersNeeded: Number(initialData.noOfVolunteersNeeded),
       date: initialData.date,
     };
 
@@ -88,7 +88,7 @@ const AddVolunteer = () => {
             </div>
             <textarea
               placeholder="Description"
-              name="Description"
+              name="description"
               className="textarea textarea-md w-full"
             ></textarea>
           </div>
@@ -121,7 +121,7 @@ const AddVolunteer = () => {
               </div>
               <input
                 type="text"
-                name="location "
+                name="location"
                 placeholder="Location "
                 className="input input-md w-full"
               />
@@ -137,7 +137,7 @@ const AddVolunteer = () => {
               </div>
               <input
                 type="number"
-                name="NoOfVolunteersNeeded"
+                name="noOfVolunteersNeeded"
                 placeholder="No. of volunteers needed"
                 className="input input-md w-full"
               />

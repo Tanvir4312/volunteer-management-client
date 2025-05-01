@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import VolunteerCard from "../component/VolunteerCard";
+
 // import { Link } from "react-router-dom";
 import Volunteer from "../component/Volunteer";
 
@@ -16,7 +16,7 @@ const AllVolunteer = () => {
     };
     fetchVolunteerData();
   }, []);
-  console.log(volunteers);
+ 
   return (
     <div className="lg:max-w-6xl md:max-w-2xl mx-auto">
       <div className="mb-6">
