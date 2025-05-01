@@ -23,10 +23,10 @@ const AddVolunteer = () => {
       name: initialData.name,
       thumbnail: initialData.thumbnail,
       postTitle: initialData.postTitle,
-      Description: initialData.email,
+      description: initialData.description,
       category: initialData.category,
       location: initialData.location,
-      NoOfVolunteersNeeded: initialData.NoOfVolunteersNeeded,
+      noOfVolunteersNeeded: initialData.NoOfVolunteersNeeded,
       date: initialData.date,
     };
 

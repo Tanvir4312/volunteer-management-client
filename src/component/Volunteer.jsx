@@ -1,0 +1,46 @@
+import React from 'react';
+
+const Volunteer = ({volunteer}) => {
+    console.log(volunteer);
+    const { thumbnail, postTitle, category, date,description,noOfVolunteersNeeded,email,name } = volunteer || {};
+    return (
+        
+      <div className="card h-[40rem] bg-base-100 shadow-sm">
+        <figure className="p-6 h-[17rem]">
+          <img
+          className="rounded h-full w-full"
+            src={thumbnail}
+            alt={thumbnail}
+          />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{postTitle}</h2>
+          <p className="font-medium">
+            Category: {category} 
+          </p>
+          <p className="font-medium">
+          No Of Volunteers Needed: {noOfVolunteersNeeded} 
+          </p>
+          <p className="font-medium">
+            Organizer Name: {name} 
+          </p>
+          <p className="font-medium">
+          Organizer Email: {email} 
+          </p>
+          <p className="font-medium">DeadLine: {date}</p>
+          <p className="font-medium">
+            Description: {description} 
+          </p>
+
+         
+          <div className="card-actions justify-center">
+            <button className="btn btn-block bg-indigo-500 text-white">Be a Volunteer</button>
+          </div>
+        </div>
+      </div>
+      
+
+    );
+};
+
+export default Volunteer;

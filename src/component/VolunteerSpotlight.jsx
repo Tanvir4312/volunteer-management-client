@@ -43,11 +43,11 @@ const VolunteerSpotlight = () => {
               can change the world.”
             </blockquote>
 
-            <div className="mt-6 bg-yellow-50 dark:bg-yellow-900/30 border-l-4 border-yellow-400 p-4 rounded-xl">
-              <h4 className="font-semibold text-yellow-700 dark:text-yellow-300 mb-1">
+            <div className="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-xl">
+              <h4 className="font-semibold text-yellow-700 mb-1">
                 👩‍💼 Admin Tip
               </h4>
-              <p className="text-sm text-yellow-700 dark:text-yellow-200">
+              <p className="text-sm text-yellow-700">
                 Keep a simple nomination form (e.g., Google Form or internal
                 form) linked at{" "}
                 <code className="bg-yellow-100 px-1 rounded">/nominate</code>.

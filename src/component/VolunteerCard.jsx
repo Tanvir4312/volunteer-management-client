@@ -1,7 +1,7 @@
 import React from "react";
 
 const VolunteerCard = ({ volunteer }) => {
-  console.log(volunteer);
+  
   const { thumbnail, postTitle, category, date } = volunteer || {};
   return (
     <div>

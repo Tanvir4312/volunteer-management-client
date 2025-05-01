@@ -39,7 +39,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <NavLink to={"/"}>All volunteer Need posts</NavLink>
+              <NavLink to={"/all-volunteer-need-posts"}>All volunteer Need posts</NavLink>
             </li>
           </ul>
         </div>
@@ -67,7 +67,7 @@ const Navbar = () => {
             </details>
           </li>
           <li>
-            <NavLink to={"/"}>All volunteer Need posts</NavLink>
+            <NavLink to={"/all-volunteer-need-posts"}>All volunteer Need posts</NavLink>
           </li>
         </ul>
       </div>
