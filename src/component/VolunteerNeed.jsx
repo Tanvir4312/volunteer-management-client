@@ -25,7 +25,7 @@ const VolunteerNeed = () => {
     </div>
     <div>
         
-        <Link to={'/all-volunteer-need-posts'}><button className="btn mt-7"><img className="mr-2" src="https://img.icons8.com/?size=48&id=12958&format=png" alt="" /> See All Button</button></Link>
+        <Link to={'/volunteer-details'}><button className="btn mt-7"><img className="mr-2" src="https://img.icons8.com/?size=48&id=12958&format=png" alt="" /> See All Button</button></Link>
       </div>
   </div>;
 };

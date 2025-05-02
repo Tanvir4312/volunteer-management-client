@@ -69,6 +69,9 @@ const Navbar = () => {
           <li>
             <NavLink to={"/all-volunteer-need-posts"}>All volunteer Need posts</NavLink>
           </li>
+          <li>
+            <NavLink to={"/volunteer-details"}>Volunteer Details</NavLink>
+          </li>
         </ul>
       </div>
       

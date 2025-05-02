@@ -26,7 +26,7 @@ const Upcoming = () => {
               cleaning supplies will be provided.
             </p>
 
-            <ul class="text-sm text-gray-500 mt-3 space-y-1">
+            <ul className="text-sm text-gray-500 mt-3 space-y-1">
               <li>
                 <strong>Date:</strong> May 15, 2025
               </li>
@@ -59,7 +59,7 @@ const Upcoming = () => {
             Help make healthcare accessible to all. Assist in organizing a medical camp for low-income families.
             </p>
 
-            <ul class="text-sm text-gray-500 mt-3 space-y-1">
+            <ul className="text-sm text-gray-500 mt-3 space-y-1">
               <li>
                 <strong>Date:</strong> May 20, 2025
               </li>
@@ -91,7 +91,7 @@ const Upcoming = () => {
             Support underprivileged children by helping distribute school supplies and uniforms before the new school year begins.
             </p>
 
-            <ul class="text-sm text-gray-500 mt-3 space-y-1">
+            <ul className="text-sm text-gray-500 mt-3 space-y-1">
               <li>
                 <strong>Date:</strong> May 26, 2025
               </li>
@@ -123,7 +123,7 @@ const Upcoming = () => {
             Join us for a day of love and care at the local animal shelter — help feed, bathe, and walk rescued pets.
             </p>
 
-            <ul class="text-sm text-gray-500 mt-3 space-y-1">
+            <ul className="text-sm text-gray-500 mt-3 space-y-1">
               <li>
                 <strong>Date:</strong> May 22, 2025
               </li>
@@ -155,7 +155,7 @@ const Upcoming = () => {
             Take part in greening our city! Volunteer to plant trees in a local park and promote a cleaner environment.
             </p>
 
-            <ul class="text-sm text-gray-500 mt-3 space-y-1">
+            <ul className="text-sm text-gray-500 mt-3 space-y-1">
               <li>
                 <strong>Date:</strong> May 25, 2025
               </li>

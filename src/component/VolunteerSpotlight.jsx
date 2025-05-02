@@ -29,16 +29,16 @@ const VolunteerSpotlight = () => {
           </div>
 
           <div className="md:w-[60%]">
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-white">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
               Ayesha Rahman
             </h3>
-            <p class="text-gray-600 dark:text-gray-300 mt-2">
+            <p className="text-gray-600 dark:text-gray-300 mt-2">
               Ayesha has volunteered over 120 hours in the past 3 months,
               helping with medical camps, food drives, and community outreach in
               low-income areas. Her compassion and leadership have made a
               lasting impact on countless lives.
             </p>
-            <blockquote class="mt-4 italic text-blue-600 dark:text-blue-300">
+            <blockquote className="mt-4 italic text-blue-600 dark:text-blue-300">
               “Volunteering has taught me that small actions, done with love,
               can change the world.”
             </blockquote>
