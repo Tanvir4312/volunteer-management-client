@@ -3,11 +3,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import { toast } from "react-toastify";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const VolunteerForm = ({ singleVolunteer, startDate, setStartDate }) => {
   const { user } = useAuth();
-  //   const navigate = useNavigate();
+    const navigate = useNavigate();
 
   
   const {
@@ -28,6 +28,10 @@ const VolunteerForm = ({ singleVolunteer, startDate, setStartDate }) => {
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
 
+    if(initialData.noOfVolunteersNeeded < 0){
+      return toast.error('No need Volunteer')
+    }
+
       const volunteerData = {
         organizer_email: initialData.email,
        organizer_name: initialData.name,
@@ -46,7 +50,7 @@ const VolunteerForm = ({ singleVolunteer, startDate, setStartDate }) => {
 
       };
       // same email validation
-    if(initialData.organizer_email === user?.email){
+    if(initialData.email === user?.email){
 return toast.error('Invalid Person')
     }
 
@@ -57,7 +61,7 @@ return toast.error('Invalid Person')
         );
 
         toast.success("You have successfully made a request");
-        // navigate("/");
+        navigate("/volunteer-details");
       } catch (err) {
         toast.error(err.response.data);
       }
@@ -126,7 +130,7 @@ return toast.error('Invalid Person')
                 readOnly
                 className="w-full border border-gray-300 py-2 bg-white rounded"
               >
-                <option disabled selected>
+                <option disabled>
                   Select a category
                 </option>
                 <option value="healthcare">Healthcare</option>

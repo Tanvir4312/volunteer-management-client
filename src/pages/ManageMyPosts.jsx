@@ -4,6 +4,7 @@ import axios from "axios";
 import MyPostsTable from "../component/MyPostsTable";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import MyRequestPosts from "../component/MyRequestPosts";
 
 const ManageMyPosts = () => {
   const { user } = useAuth();
@@ -92,6 +93,10 @@ const ManageMyPosts = () => {
           </h3>
         </div>
       )}
+
+      <div>
+        <MyRequestPosts></MyRequestPosts>
+      </div>
     </div>
   );
 };

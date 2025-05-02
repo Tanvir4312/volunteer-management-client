@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Volunteer = ({volunteer}) => {
 
     const {_id, location, thumbnail, postTitle, category, date, description, noOfVolunteersNeeded, email, name } = volunteer || {};
-    
+
     return (
         
       <div className="card h-[40rem] bg-base-100 shadow-sm">

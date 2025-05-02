@@ -103,8 +103,9 @@ const AddVolunteer = () => {
               <select
                 name="category"
                 className="w-full border border-gray-300 py-2 bg-white rounded"
+                defaultValue={'Select a category'}
               >
-                <option disabled selected>
+                <option disabled>
                   Select a category
                 </option>
                 <option value="healthcare">Healthcare</option>
