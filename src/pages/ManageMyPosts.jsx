@@ -2,21 +2,53 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import MyPostsTable from "../component/MyPostsTable";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const ManageMyPosts = () => {
   const { user } = useAuth();
   const [myPosts, setMyPosts] = useState([]);
 
+  const fetchMyPostsData = async () => {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/my-posts/${user?.email}`
+    );
+    setMyPosts(data);
+  };
 
   useEffect(() => {
-    const fetchMyPostsData = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/my-posts/${user?.email}`
-      );
-      setMyPosts(data);
-    };
     fetchMyPostsData();
-  }, [user?.email]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleDelete = (id) => {
+ 
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await axios.delete(
+            `${import.meta.env.VITE_API_URL}/data-delete/${id}`
+          );
+          fetchMyPostsData();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      });
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   return (
     <div className="lg:max-w-6xl md:max-w-2xl mx-auto">
@@ -42,6 +74,7 @@ const ManageMyPosts = () => {
                 <tbody>
                   {myPosts.map((myPost, idx) => (
                     <MyPostsTable
+                      handleDelete={handleDelete}
                       myPost={myPost}
                       idx={idx}
                       key={myPost._id}
