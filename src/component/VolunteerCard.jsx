@@ -1,11 +1,12 @@
 import React from "react";
+import useAuth from "../hooks/useAuth";
 
 const VolunteerCard = ({ volunteer }) => {
-  
+  const {dark} = useAuth()
   const { thumbnail, postTitle, category, date } = volunteer || {};
   return (
     <div>
-      <div className="card h-[30rem] bg-base-100 shadow-sm">
+      <div className={`card h-[30rem] ${dark && 'bg-black text-white'} bg-base-100 shadow-sm`}>
         <figure className="p-6 h-[17rem]">
           <img
           className="rounded h-full w-full"

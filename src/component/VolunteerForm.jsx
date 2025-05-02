@@ -9,6 +9,7 @@ const VolunteerForm = ({ singleVolunteer, startDate, setStartDate }) => {
   const { user } = useAuth();
     const navigate = useNavigate();
 
+     
   
   const {
     thumbnail,
@@ -22,15 +23,19 @@ const VolunteerForm = ({ singleVolunteer, startDate, setStartDate }) => {
     _id
   } = singleVolunteer || {};
 
+ 
+
   const handleVolunteer = async (e) => {
     e.preventDefault();
+
+    if(singleVolunteer.noOfVolunteersNeeded <= 0){
+      return toast.error('No need Volunteer')
+    }
 
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
 
-    if(initialData.noOfVolunteersNeeded < 0){
-      return toast.error('No need Volunteer')
-    }
+    
 
       const volunteerData = {
         organizer_email: initialData.email,
@@ -49,10 +54,10 @@ const VolunteerForm = ({ singleVolunteer, startDate, setStartDate }) => {
         id: _id
 
       };
-      // same email validation
-    if(initialData.email === user?.email){
-return toast.error('Invalid Person')
-    }
+     // same email validation
+     if(singleVolunteer.email === user?.email){
+      return toast.error('Invalid Person')
+          }
 
       try {
         await axios.post(

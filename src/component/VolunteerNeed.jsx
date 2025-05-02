@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import VolunteerCard from "./VolunteerCard";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const VolunteerNeed = () => {
   const [volunteers, setVolunteers] = useState([]);
+  const {dark} = useAuth()
 
   useEffect(() => {
     const fetchVolunteerData = async () => {
@@ -17,7 +19,7 @@ const VolunteerNeed = () => {
   }, []);
 
   return <div className="mb-6">
-    <h1 className="text-center text-3xl font-medium my-12">Volunteer Needs Now</h1>
+    <h1 className={`text-center ${dark && 'text-white'} text-3xl font-medium my-12`}>Volunteer Needs Now</h1>
     <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
         {
             volunteers.map(volunteer => <VolunteerCard key={volunteer._id} volunteer={volunteer}></VolunteerCard>)

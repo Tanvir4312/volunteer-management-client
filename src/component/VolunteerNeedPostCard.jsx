@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 const VolunteerNeedPostCard = ({volunteer}) => {
     // console.log(volunteer);
     const {  thumbnail, postTitle, category, date, location} = volunteer || {};
+    const { dark } = useAuth();
     return (
-        <div className="card  bg-base-100 shadow-sm">
+        <div className={`card ${
+          dark && "bg-black text-white" 
+        } bg-base-100 shadow-sm`}>
         <figure className="p-6 h-[15rem]">
           <img
           className="rounded h-full w-full"

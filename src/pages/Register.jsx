@@ -3,10 +3,16 @@ import Lottie from "lottie-react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 const Register = () => {
   const { userRegister, userProfileUpdate } = useAuth();
   const navigate = useNavigate();
+  const { dark } = useAuth();
+
+      useEffect(() => {
+          document.title = "Register | Volunteer Connect";
+      }, []);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -30,10 +36,10 @@ const Register = () => {
   };
 
   return (
-    <div className="md:w-6xl mx-auto my-9">
-      <div className="mb-10 text-center">
+    <div className="md:w-6xl mx-auto pt-9 pb-34">
+      <div className="pb-10 text-center">
         <h1 className="text-5xl font-bold">
-          <span className="text-amber-500">Register</span> Now
+          <span className="text-amber-500">Register</span> <span className={`${dark && 'text-white'}`}>Now</span>
         </h1>
       </div>
       <div className="w-full md:flex gap-6">

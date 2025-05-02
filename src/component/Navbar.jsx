@@ -2,12 +2,17 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 const Navbar = () => {
-  const { user, userLogout } = useAuth();
+  const { user, userLogout, changeTheme, dark } = useAuth();
 
   const handleLogout = async () => {
     await userLogout();
   };
+
+  const handleTheme = () => {
+    changeTheme();
+  };
  
+
   return (
     <div className="navbar">
       <div className="navbar-start">
@@ -31,7 +36,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-amber-300 text-slate-800 font-medium rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className={`menu menu-sm dropdown-content ${dark && 'bg-black text-white'} bg-amber-300 text-slate-800 font-medium rounded-box z-1 mt-3 w-52 p-2 shadow`}
           >
             <li className="">
               <NavLink to={"/"}>Home</NavLink>
@@ -48,7 +53,7 @@ const Navbar = () => {
             <li>
               <details>
                 <summary>My Profile</summary>
-                <ul className="w-52 bg-amber-200 z-10 rounded">
+                <ul className={`w-52 ${dark && 'bg-black text-white'} bg-amber-200 z-10 rounded`}>
                   <li>
                     <Link to={"/add-volunteer"}>Add Volunteer need Post</Link>
                   </li>
@@ -60,20 +65,23 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost -ml-8 md:-ml-0 text-indigo-500 hover:bg-white md:text-2xl text-xl border-0 shadow-none">
+    <a className={`btn btn-ghost -ml-8 md:-ml-0 text-indigo-500 ${dark ? 'hover:bg-black' : 'hover:bg-white'}  md:text-2xl text-xl border-0 shadow-none`}>
           <span className="-mr-2 md:text-6xl text-amber-500">V</span>olunteer
           <span className="-mx-2 md:text-4xl text-amber-500">C</span>onnect
         </a>
       </div>
+      <button onClick={handleTheme} className="btn">
+        {dark ? 'Light' : 'Dark'}
+      </button>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-slate-800 font-medium">
+        <ul className={`menu menu-horizontal px-1 ${dark && 'text-white'} text-slate-800 font-medium`}>
           <li>
             <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
             <details>
               <summary>My Profile</summary>
-              <ul className="w-52 bg-amber-300 z-10">
+              <ul className={`w-52 ${dark && 'bg-black'} bg-amber-300 z-10`}>
                 <li>
                   <Link to={"/add-volunteer"}>Add Volunteer need Post</Link>
                 </li>

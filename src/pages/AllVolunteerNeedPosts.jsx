@@ -1,11 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import VolunteerNeedPostCard from '../component/VolunteerNeedPostCard';
+import useAuth from '../hooks/useAuth';
 
 const AllVolunteerNeedPosts = () => {
     const [volunteers, setVolunteers] = useState([]);
     const [search, setSearch] = useState('')
+    const { dark } = useAuth();
 
+        useEffect(() => {
+            document.title = "All Volunteer | Volunteer Connect";
+        }, []);
 
     useEffect(() =>{
         const fetchDataBySearch = async () => {
@@ -30,14 +35,14 @@ const AllVolunteerNeedPosts = () => {
     return (
         <div className="lg:max-w-6xl md:max-w-2xl mx-auto">
             <div className="mb-6">
-          <h1 className="text-center text-3xl font-medium my-12">
+          <h1 className={`text-center text-3xl ${dark && 'text-white'} font-medium py-12`}>
           All  Volunteer Need Posts
           </h1>
 
           <div className='w-[400px] mx-auto mb-7'>
           <input
           onChange={( e)=> setSearch(e.target.value)} 
-          className='py-2 border border-gray-200 px-3 rounded w-full' 
+          className={`py-2 border border-gray-200 px-3 rounded w-full ${dark && 'text-white'}`} 
           type="search" 
           
           placeholder='Search' />

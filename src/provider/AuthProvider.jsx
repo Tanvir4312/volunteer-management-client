@@ -19,6 +19,15 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [dark, setDark] = useState(false);
+
+  useEffect(() =>{
+    document.body.className = dark ? 'dark' : 'light'
+  },[dark])
+
+  const changeTheme = () => {
+    setDark(!dark);
+  };
 
   const userRegister = (email, password) => {
     setLoading(true);
@@ -58,7 +67,6 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-
   const authInfo = {
     user,
     loading,
@@ -66,7 +74,9 @@ const AuthProvider = ({ children }) => {
     userSignin,
     userProfileUpdate,
     userLogout,
-    signinWithGoogle
+    signinWithGoogle,
+    changeTheme,
+    dark
   };
 
   return (

@@ -9,6 +9,11 @@ import MyRequestPosts from "../component/MyRequestPosts";
 const ManageMyPosts = () => {
   const { user } = useAuth();
   const [myPosts, setMyPosts] = useState([]);
+  const { dark } = useAuth();
+
+  useEffect(() => {
+    document.title = "Manage My Post | Volunteer Connect";
+  }, []);
 
   const fetchMyPostsData = async () => {
     const { data } = await axios.get(
@@ -23,7 +28,6 @@ const ManageMyPosts = () => {
   }, []);
 
   const handleDelete = (id) => {
- 
     try {
       Swal.fire({
         title: "Are you sure?",
@@ -55,14 +59,18 @@ const ManageMyPosts = () => {
     <div className="lg:max-w-6xl md:max-w-2xl mx-auto">
       {myPosts.length ? (
         <>
-          <h1 className="text-3xl font-bold text-center my-9">
-            My <span className="text-amber-500">Posts</span>: ({myPosts.length})
+          <h1 className="text-3xl font-bold text-center py-9">
+            <span className={`${dark && "text-white"}`}>My</span>{" "}
+            <span className="text-amber-500">Posts</span>{" "}
+            <span className={`${dark && "text-white"}`}>
+              : ({myPosts.length})
+            </span>
           </h1>
           <div>
             <div className="overflow-x-auto">
-              <table className="table">
+              <table className={`table ${dark && "text-white"}`}>
                 {/* head */}
-                <thead>
+                <thead className={`${dark && "text-white"}`}>
                   <tr>
                     <th></th>
                     <th>Post title</th>

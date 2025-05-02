@@ -1,8 +1,10 @@
 import React from "react";
+import useAuth from "../hooks/useAuth";
 
 const Footer = () => {
+  const { dark } = useAuth();
   return (
-    <div className="bg-amber-500">
+    <div className={`bg-amber-500 ${dark && 'bg-black'}`}>
       <div className="lg:max-w-6xl md:max-w-2xl mx-auto">
         <footer className="footer sm:footer-horizontal  p-10 text-white">
           <nav>
@@ -39,11 +41,11 @@ const Footer = () => {
               <span className="text-6xl font-bold text-indigo-500 -mr-3">
                 V
               </span>
-              olunteer{" "}
+              <span className={`${dark && 'text-white'}`}>olunteer</span>{" "}
               <span className="relative text-6xl font-bold text-indigo-500 top-3 right-2">
                 C
               </span>
-              <span className="relative right-6">onnect</span>
+              <span className={`relative right-6 ${dark && 'text-white'}`}>onnect</span>
             </h1>
           </aside>
           <nav className="md:place-self-center md:justify-self-end">
@@ -53,13 +55,13 @@ const Footer = () => {
               {/* Youtube */}
               <a target="blank" href="https://www.youtube.com/"><img src="https://img.icons8.com/?size=48&id=9a46bTk3awwI&format=png" alt="" /></a>
               {/* X handle */}
-              <a target="blank" href="https://x.com/"><img className="" src="https://img.icons8.com/?size=50&id=A4DsujzAX4rw&format=png" alt="" /></a>
+              <a target="blank" href="https://x.com/"><img className={`${dark && 'bg-white'}`} src="https://img.icons8.com/?size=50&id=A4DsujzAX4rw&format=png" alt="" /></a>
              
             </div>
           </nav>
          
         </footer>
-        <div className="text-center">
+        <div className={`text-center ${dark && 'text-white'}`}>
             <p>
               Copyright © {new Date().getFullYear()} - All right reserved by
               TF Industries Ltd

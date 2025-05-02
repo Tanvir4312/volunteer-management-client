@@ -11,6 +11,10 @@ const Update = () => {
   const navigate = useNavigate()
   const [post, setPost] = useState({});
   const [startDate, setStartDate] = useState(new Date());
+
+      useEffect(() => {
+          document.title = "Update | Volunteer Connect";
+      }, []);
  
   const fetchDataById = async () => {
     const { data } = await axios.get(
@@ -45,8 +49,8 @@ const Update = () => {
   };
 
   return (
-    <div className="lg:max-w-6xl md:max-w-2xl mx-auto">
-      <div className="my-8 bg-amber-100/50 p-10 rounded-lg">
+    <div className="lg:max-w-6xl md:max-w-2xl mx-auto py-10">
+      <div className=" bg-amber-100/50 p-6 rounded-lg">
         {/* Input field Form */}
         <form onSubmit={handleUpdate}>
           {/* Line No:1 */}
@@ -104,7 +108,7 @@ const Update = () => {
                   defaultValue={post?.category}
                   className="w-full border border-gray-300 py-2 bg-white rounded"
                 >
-                  <option disabled selected>
+                  <option disabled>
                     Select a category
                   </option>
                   <option value="healthcare">Healthcare</option>

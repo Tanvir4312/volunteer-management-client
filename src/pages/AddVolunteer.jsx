@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,6 +11,11 @@ const AddVolunteer = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { dark } = useAuth();
+
+      useEffect(() => {
+          document.title = "Add Volunteer | Volunteer Connect";
+      }, []);
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -43,9 +48,9 @@ const AddVolunteer = () => {
     }
   };
   return (
-    <div className="lg:max-w-6xl md:max-w-2xl mx-auto my-10">
+    <div className="lg:max-w-6xl md:max-w-2xl mx-auto py-10">
       <h1 className="text-center text-3xl font-bold">
-        Add <span className="text-amber-500">Volunteer</span>{" "}
+        <span className={`${dark && 'text-white'}`}>Add</span> <span className="text-amber-500">Volunteer</span>{" "}
       </h1>
 
       <div className="my-8 bg-amber-100/50 p-10 rounded-lg">

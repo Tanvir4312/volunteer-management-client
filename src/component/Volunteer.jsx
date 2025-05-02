@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 const Volunteer = ({volunteer}) => {
 
     const {_id, location, thumbnail, postTitle, category, date, description, noOfVolunteersNeeded, email, name } = volunteer || {};
-
+    const { dark } = useAuth();
     return (
         
-      <div className="card h-[40rem] bg-base-100 shadow-sm">
+      <div className={`card h-[40rem] bg-base-100 shadow-sm ${dark && 'bg-black text-white'}`}>
         <figure className="p-6 h-[17rem]">
           <img
           className="rounded h-full w-full"

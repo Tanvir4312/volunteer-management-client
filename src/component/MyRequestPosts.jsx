@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 const MyRequestPosts = () => {
   const { user } = useAuth();
   const [myRequestPosts, setMyRequestPosts] = useState([]);
+  const { dark } = useAuth();
 
   const fetchMyRequestPostsData = async () => {
     const { data } = await axios.get(
@@ -56,14 +57,14 @@ const MyRequestPosts = () => {
       {myRequestPosts.length ? (
         <>
           <h1 className="text-3xl font-bold text-center my-16">
-            My <span className="text-amber-500">Request Posts</span>: (
-            {myRequestPosts.length})
+            <span className={`${dark && "text-white"}`}>My</span> <span className="text-amber-500">Request Posts</span><span className={`${dark && "text-white"}`}> : (
+              {myRequestPosts.length})</span>
           </h1>
           <div>
             <div className="overflow-x-auto">
-              <table className="table">
+              <table className={`table ${dark && "text-white"}`}>
                 {/* head */}
-                <thead>
+                <thead className={`${dark && "text-white"}`}>
                   <tr>
                     <th></th>
                     <th>Post title</th>

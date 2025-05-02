@@ -1,10 +1,12 @@
 import React from "react";
 import a from "../assets/picture/download.jpg";
+import useAuth from "../hooks/useAuth";
 
 const VolunteerSpotlight = () => {
+  const { dark } = useAuth();
   return (
     <div className="mb-10 p-4">
-      <div className="text-center my-9">
+      <div className={`text-center ${dark && 'text-white'} my-9`}>
         <h1 className="text-3xl font-medium">
           🏅 Volunteer Spotlight: Hero of the Month
         </h1>
