@@ -10,6 +10,8 @@ import PrivateRoute from "./PrivateRoute";
 import BeAVolunteer from "../pages/BeAVolunteer";
 import VolunteerDetails from "../pages/VolunteerDetails";
 import AllVolunteerNeedPosts from "../pages/AllVolunteerNeedPosts";
+import ManageMyPosts from "../pages/ManageMyPosts";
+import Update from "../pages/Update";
 
 const router = createBrowserRouter([
   {
@@ -43,8 +45,16 @@ const router = createBrowserRouter([
     element: <BeAVolunteer></BeAVolunteer>
   },
   {
-    path: '/all-volunteer-need-posts',
+    path: 'all-volunteer-need-posts',
     element: <AllVolunteerNeedPosts></AllVolunteerNeedPosts>
+  },
+  {
+    path: 'manage-my-posts',
+    element:<PrivateRoute><ManageMyPosts></ManageMyPosts></PrivateRoute>
+  },
+  {
+    path: '/update/:id',
+    element: <PrivateRoute><Update></Update></PrivateRoute>
   }
 ]);
 export default router;

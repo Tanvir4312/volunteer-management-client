@@ -21,10 +21,10 @@ const VolunteerSpotlight = () => {
         <div className="relative ml-2 top-8 -left-2 bg-amber-500 text-white text-[16px] px-2 py-[2px] font-bold rounded-md shadow-lg animate-pulse w-48">
           🌟 Hero of the Month
         </div>
-        <div className="md:flex gap-10 bg-base-100 shadow-sm md:w-[60rem] p-5">
+        <div className="md:flex gap-10 bg-base-100 shadow-sm lg::w-[60rem] p-5">
           <div className="md:w-[40%]">
             <figure className="h-full">
-              <img className="w-full h-full" src={a} alt="Movie" />
+              <img className="w-full h-full rounded-lg" src={a} alt="Movie" />
             </figure>
           </div>
 

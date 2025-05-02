@@ -1,14 +1,13 @@
 import React from "react";
-import { Link, NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 const Navbar = () => {
   const { user, userLogout } = useAuth();
- 
+
   const handleLogout = async () => {
     await userLogout();
-    
   };
-  console.log(user);
+ 
   return (
     <div className="navbar">
       <div className="navbar-start">
@@ -32,14 +31,32 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content text-slate-800 font-medium rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-amber-300 text-slate-800 font-medium rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li className="">
               <NavLink to={"/"}>Home</NavLink>
             </li>
 
             <li>
-              <NavLink to={"/all-volunteer-need-posts"}>All volunteer Need posts</NavLink>
+              <NavLink to={"/all-volunteer-need-posts"}>
+                All volunteer Need posts
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={"/volunteer-details"}>Volunteer Details</NavLink>
+            </li>
+            <li>
+              <details>
+                <summary>My Profile</summary>
+                <ul className="w-52 bg-amber-200 z-10 rounded">
+                  <li>
+                    <Link to={"/add-volunteer"}>Add Volunteer need Post</Link>
+                  </li>
+                  <li>
+                    <Link to={"/manage-my-posts"}>Manage My Posts</Link>
+                  </li>
+                </ul>
+              </details>
             </li>
           </ul>
         </div>
@@ -61,26 +78,34 @@ const Navbar = () => {
                   <Link to={"/add-volunteer"}>Add Volunteer need Post</Link>
                 </li>
                 <li>
-                  <Link to={"/"}>Manage My Posts</Link>
+                  <Link to={"/manage-my-posts"}>Manage My Posts</Link>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <NavLink to={"/all-volunteer-need-posts"}>All volunteer Need posts</NavLink>
+            <NavLink to={"/all-volunteer-need-posts"}>
+              All volunteer Need posts
+            </NavLink>
           </li>
           <li>
             <NavLink to={"/volunteer-details"}>Volunteer Details</NavLink>
           </li>
         </ul>
       </div>
-      
+
       <div className="navbar-end">
-      <div className="md:mr-4">
-        {
-          user && <img title={user?.displayName} referrerPolicy="no-referrer" className="md:w-12 md:h-12 w-7 h-7  rounded-full hover:cursor-pointer" src={user.photoURL} alt="" />
-        }
-      </div>
+        <div className="md:mr-4">
+          {user && (
+            <img
+              title={user?.displayName}
+              referrerPolicy="no-referrer"
+              className="md:w-12 md:h-12 w-7 h-7  rounded-full hover:cursor-pointer"
+              src={user.photoURL}
+              alt=""
+            />
+          )}
+        </div>
         {user ? (
           <button onClick={handleLogout} className="btn">
             Logout
