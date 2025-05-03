@@ -8,7 +8,7 @@ const Volunteer = ({volunteer}) => {
     const { dark } = useAuth();
     return (
         
-      <div className={`card h-[40rem] bg-base-100 shadow-sm ${dark && 'bg-black text-white'}`}>
+      <div className={`card bg-base-100 shadow-sm ${dark && 'bg-black text-white'}`}>
         <figure className="p-6 h-[17rem]">
           <img
           className="rounded h-full w-full"

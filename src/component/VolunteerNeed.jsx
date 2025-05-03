@@ -1,22 +1,23 @@
-import axios from "axios";
+
 import React, { useEffect, useState } from "react";
 import VolunteerCard from "./VolunteerCard";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const VolunteerNeed = () => {
   const [volunteers, setVolunteers] = useState([]);
   const {dark} = useAuth()
-
+const axiosSecure = useAxiosSecure()
   useEffect(() => {
     const fetchVolunteerData = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/get-volunteer`
+      const { data } = await axiosSecure.get(
+        `/get-volunteer`
       );
       setVolunteers(data);
     };
     fetchVolunteerData()
-  }, []);
+  }, [axiosSecure]);
 
   return <div className="mb-6">
     <h1 className={`text-center ${dark && 'text-white'} text-3xl font-medium my-12`}>Volunteer Needs Now</h1>

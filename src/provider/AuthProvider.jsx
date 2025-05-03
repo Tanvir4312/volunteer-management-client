@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from 'axios'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
@@ -21,9 +22,9 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [dark, setDark] = useState(false);
 
-  useEffect(() =>{
-    document.body.className = dark ? 'dark' : 'light'
-  },[dark])
+  useEffect(() => {
+    document.body.className = dark ? "dark" : "light";
+  }, [dark]);
 
   const changeTheme = () => {
     setDark(!dark);
@@ -58,9 +59,23 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async(currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+
+      if (currentUser?.email) {
+        const email = {
+          email: currentUser.email,
+        };
+
+       axios.post(`${import.meta.env.VITE_API_URL}/jwt`,email, {withCredentials: true})
+       
+        setLoading(false);
+      }
+      else{
+        await axios.get(`${import.meta.env.VITE_API_URL}/jwt-logout`, {withCredentials: true})
+        setLoading(false);
+      }
+      
     });
     return () => {
       unsubscribe();
@@ -76,7 +91,7 @@ const AuthProvider = ({ children }) => {
     userLogout,
     signinWithGoogle,
     changeTheme,
-    dark
+    dark,
   };
 
   return (

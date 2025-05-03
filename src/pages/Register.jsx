@@ -23,7 +23,7 @@ const Register = () => {
     const password = initialData.password;
     const userName = initialData.userName;
     const photoURL = initialData.photoURL;
-    console.log(email, password);
+    
     try {
       await userRegister(email, password);
       await userProfileUpdate(userName, photoURL);
