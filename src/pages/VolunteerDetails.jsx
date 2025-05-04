@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import Volunteer from "../component/Volunteer";
 import useAuth from '../hooks/useAuth';
-import useAxiosSecure from '../hooks/useAxiosSecure';
+import axios from 'axios';
+// import useAxiosSecure from '../hooks/useAxiosSecure';
 
 
 const VolunteerDetails = () => {
     const [volunteers, setVolunteers] = useState([]);
     const { dark } = useAuth();
-    const axiosSecure = useAxiosSecure()
+    // const axiosSecure = useAxiosSecure()
 
         useEffect(() => {
             document.title = "Volunteer Details | Volunteer Connect";
@@ -19,13 +20,13 @@ const VolunteerDetails = () => {
     
       useEffect(() => {
         const fetchVolunteerData = async () => {
-          const { data } = await axiosSecure.get(
-            `/get-volunteer`
+          const { data } = await axios.get(
+            `${import.meta.env.VITE_API_URL}/get-volunteer`
           );
           setVolunteers(data);
         };
         fetchVolunteerData();
-      }, [axiosSecure]);
+      }, []);
      
     return (
         <div className="lg:max-w-6xl md:max-w-2xl mx-auto">

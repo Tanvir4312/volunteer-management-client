@@ -27,6 +27,7 @@ const AuthProvider = ({ children }) => {
   }, [dark]);
 
   const changeTheme = () => {
+    setLoading(true);
     setDark(!dark);
   };
 
@@ -60,19 +61,18 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async(currentUser) => {
+   
       setUser(currentUser);
-
-      if (currentUser?.email) {
-        const email = {
-          email: currentUser.email,
-        };
-
-       axios.post(`${import.meta.env.VITE_API_URL}/jwt`,email, {withCredentials: true})
-       
-        setLoading(false);
-      }
-      else{
-        await axios.get(`${import.meta.env.VITE_API_URL}/jwt-logout`, {withCredentials: true})
+      try {
+        if (currentUser?.email) {
+          const email = { email: currentUser.email };
+          await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, email, { withCredentials: true });
+        } else {
+          await axios.get(`${import.meta.env.VITE_API_URL}/jwt-logout`, { withCredentials: true });
+        }
+      } catch (error) {
+        console.error('JWT Auth error:', error);
+      } finally {
         setLoading(false);
       }
       

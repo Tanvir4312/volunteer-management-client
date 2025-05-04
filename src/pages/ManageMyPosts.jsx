@@ -5,21 +5,21 @@ import MyPostsTable from "../component/MyPostsTable";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import MyRequestPosts from "../component/MyRequestPosts";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+// import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageMyPosts = () => {
   const { user } = useAuth();
   const [myPosts, setMyPosts] = useState([]);
   const { dark } = useAuth();
-  const axiosSecure = useAxiosSecure()
+  // const axiosSecure = useAxiosSecure()
 
   useEffect(() => {
     document.title = "Manage My Post | Volunteer Connect";
   }, []);
 
   const fetchMyPostsData = async () => {
-    const { data } = await axiosSecure.get(
-      `/my-posts/${user?.email}`
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/my-posts/${user?.email}`
     );
     setMyPosts(data);
   };

@@ -1,12 +1,33 @@
-# React + Vite
+# 🌟 VolunteerConnect - Volunteer Management Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📝 Project Purpose
+**VolunteerConnect** is a web-based platform designed to streamline the process of managing volunteers and organizing events for non-profit organizations. It enables users to browse available volunteer opportunities, register for events, and manage their participation through a simple and intuitive interface.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live URL
 
-## Expanding the ESLint configuration
+👉 [Visit the Live Site](https://volunteer-management-39ddb.web.app)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## 🚀 Key Features
+
+- 🔐 **User Authentication** (Sign up, Log in, Log out)
+- 📅 **Event Management**: View upcoming events, register as a volunteer
+- 🧑‍🤝‍🧑 **Volunteer Dashboard**: Manage registered events
+- 🗂️ **Admin Panel**: Add/edit/delete events and manage volunteers
+- 🌗 **Dark/Light Theme Toggle**
+- 🔍 **Search and Filter** volunteer opportunities
+- 📱 **Responsive Design** for all devices
+- 🔔 **Toast Notifications** for actions like registration and login
+
+## 📦 NPM Packages Used
+- react  
+- react-dom  
+- react-router-dom  
+- tailwindcss  
+- daisyui  
+- firebase  
+- axios  
+- react-toastify  
+- react-hook-form 
+- react-icons  

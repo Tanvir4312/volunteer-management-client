@@ -4,7 +4,8 @@ import DatePicker from "react-datepicker";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+// import useAxiosSecure from "../hooks/useAxiosSecure";
+import axios from "axios";
 
 const Update = () => {
   const { id } = useParams();
@@ -12,15 +13,15 @@ const Update = () => {
   const navigate = useNavigate()
   const [post, setPost] = useState({});
   const [startDate, setStartDate] = useState(new Date());
-  const axiosSecure = useAxiosSecure()
+  // const axiosSecure = useAxiosSecure()
 
       useEffect(() => {
           document.title = "Update | Volunteer Connect";
       }, []);
  
   const fetchDataById = async () => {
-    const { data } = await axiosSecure.get(
-      `/volunteer-get/${id}`
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/volunteer-get/${id}`
     );
     setPost(data);
     setStartDate(new Date(data.date));
@@ -39,8 +40,8 @@ const Update = () => {
 
 
     try {
-      await axiosSecure.put(
-        `/update-data/${id}`,
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/update-data/${id}`,
         initialData
       );
      toast.success('Data update successfully')

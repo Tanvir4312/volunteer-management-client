@@ -6,14 +6,15 @@ import useAuth from "../hooks/useAuth";
 
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+// import useAxiosSecure from "../hooks/useAxiosSecure";
+import axios from "axios";
 
 const AddVolunteer = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
   const navigate = useNavigate();
   const { dark } = useAuth();
-  const axiosSecure = useAxiosSecure()
+
 
       useEffect(() => {
           document.title = "Add Volunteer | Volunteer Connect";
@@ -38,8 +39,8 @@ const AddVolunteer = () => {
     };
 
     try {
-      await axiosSecure.post(
-        `/add-volunteer`,
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/add-volunteer`,
         volunteerData
       );
       

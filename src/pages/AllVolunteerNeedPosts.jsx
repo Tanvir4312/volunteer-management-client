@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import VolunteerNeedPostCard from "../component/VolunteerNeedPostCard";
 import useAuth from "../hooks/useAuth";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+// import useAxiosSecure from "../hooks/useAxiosSecure";
 import VolunteerNeedPostTable from "../component/VolunteerNeedPostTable";
 
 const AllVolunteerNeedPosts = () => {
@@ -10,7 +10,7 @@ const AllVolunteerNeedPosts = () => {
   const [search, setSearch] = useState("");
   const [layout, setLayout] = useState("card");
   const { dark } = useAuth();
-  const axiosSecure = useAxiosSecure();
+  // const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     document.title = "All Volunteer | Volunteer Connect";
@@ -29,11 +29,11 @@ const AllVolunteerNeedPosts = () => {
   useEffect(() => {
     [];
     const fetchVolunteerData = async () => {
-      const { data } = await axiosSecure.get(`/get-volunteer`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/get-volunteer`);
       setVolunteers(data);
     };
     fetchVolunteerData();
-  }, [axiosSecure]);
+  }, []);
 
   const handleCardLayout = () => {
     setLayout("card");

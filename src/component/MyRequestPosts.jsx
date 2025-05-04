@@ -4,17 +4,17 @@ import axios from "axios";
 import MyRequestPostTable from "./MyRequestPostTable";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+// import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyRequestPosts = () => {
   const { user } = useAuth();
   const [myRequestPosts, setMyRequestPosts] = useState([]);
   const { dark } = useAuth();
-  const axiosSecure = useAxiosSecure()
+  // const axiosSecure = useAxiosSecure()
 
   const fetchMyRequestPostsData = async () => {
-    const { data } = await axiosSecure.get(
-      `/my-request-posts/${user?.email}`
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/my-request-posts/${user?.email}`
     );
     setMyRequestPosts(data);
   };
